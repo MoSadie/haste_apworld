@@ -31,7 +31,6 @@ def create_regions(world) -> Dict[str, Region]:
 
     # create initial menu region first
     menu_region = Region(world.origin_region_name, player, world.multiworld)
-    world.multiworld.regions.append(menu_region)
     regions["Menu"] = menu_region
 
     # make regions for the 10 shards, each requiring the X-1 number of progressive shards, and each connecting to the menu
