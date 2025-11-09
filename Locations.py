@@ -148,11 +148,13 @@ def create_locations(world, regions):
                     if (data.skin == 1 or data.skin == 7 or data.skin == 2 or data.skin == 3):
                         continue
                     elif data.skin == 10:
-                        # adding Weeboh to Shard 5 to piggyback speed calcs
-                        location = HasteLocation(world.player, location_name, regions["Shard 5"], data)
+                        # adding Weeboh around halfway to shard goal to piggyback speed calcs
+                        halfwayshard = min(max(1, floor(world.options.shard_goal / 2)), world.options.shard_goal)
+                        location = HasteLocation(world.player, location_name, regions[f"Shard {halfwayshard}"], data)
                     elif data.skin == 6:
-                        # adding Twisted to Shard 7 to piggyback speed calcs
-                        location = HasteLocation(world.player, location_name, regions["Shard 7"], data)
+                        # adding Twisted to shard around 75% to shard goal to piggyback speed calcs
+                        almostthereshard = min(max(1, floor((world.options.shard_goal * 3) / 4)), world.options.shard_goal)
+                        location = HasteLocation(world.player, location_name, regions[f"Shard {almostthereshard}"], data)
                 regions["Menu"].locations.append(location)
 
             if data.flags == HasteFlag.Boss:
